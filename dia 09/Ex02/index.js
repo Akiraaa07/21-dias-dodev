@@ -31,5 +31,5 @@ for(let anoVivido = anoNasc; anoVivido <= anoAtual; anoVivido++){
 }
 
 do{
-    let continuar = prompt("Deseja inserir os dados novamente? (s/n): ").toUpperCase(); 
+    continuar = prompt("Deseja inserir os dados novamente? (s/n): ").toUpperCase(); 
 }while(continuar == "s")
