@@ -41,7 +41,38 @@ function cadastrarHotel(){
     let categoria = prompt("Digite a categoria do hotel: ");
     let endereco = prompt("Digite o endereço do hotel: ");
     let telefone = prompt("Digite o telefone do hotel: ");
-    let hotel = new Hotel(idHotel, nome, categoria, endereco, telefone)
+    let hotel = new Hotel(idHotel, nome, categoria, endereco, telefone);
     idHotel++;
-    hoteis.push(hotel)
+    hoteis.push(hotel);
 }
+
+function cadastrarReserva(){
+    let IdHotel
+    let existe = false;
+    do{
+        idHotel = parseInt(prompt("Digite o id do hotel: "));
+        for(let i = 0; i < hoteis.length; i++){
+            if(idHotel == hoteis[i].Id){
+                i = hoteis.length
+                existe = true
+            }else if(i == hoteis.length - 1){
+                console.log("id de hotel não cadastrado!");
+            }
+        }
+    }while(!existe)
+
+    let nome = prompt("Digite o nome do responsavel: ");
+    let diaEntrada = parseInt(prompt("Digite o dia de entrada: "));
+    let diaSaida 
+    do{
+        diaSaida = parseInt(prompt("Digite o dia de saída: "));
+        if(diaSaida < diaEntrada){
+            console.log("Você deve escolher um dia de saida maior do que o dia de entrada!");
+        }
+    }while(diaSaida < diaEntrada)
+
+    let reserva = new Reserva(idReserva, idHotel, nome, diaEntrada, diaSaida)
+    idReserva++
+    reservas.push(reserva)
+}
+
