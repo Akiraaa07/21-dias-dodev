@@ -66,7 +66,7 @@ function cadastrarReserva(){
     let diaSaida 
     do{
         diaSaida = parseInt(prompt("Digite o dia de saída: "));
-        if(diaSaida < diaEntrada){
+        if(diaSaida < diaEntrada){ 
             console.log("Você deve escolher um dia de saida maior do que o dia de entrada!");
         }
     }while(diaSaida < diaEntrada)
@@ -76,3 +76,21 @@ function cadastrarReserva(){
     reservas.push(reserva)
 }
 
+function procurarReservasPeloHotel(idHotel){
+    reservas.forEach(reserva => {
+        if(idHotel == reserva.IdHotel){
+            console.log("Hotel: ", hoteis[i].Nome);
+            console.log("Responsável: ", reserva.NomeResponsavel);
+            console.log("Dia Entrada: ", reserva.DiaEntrada);
+            console.log("Dia Saída: ", reserva.DiaSaida);
+        }
+    })
+}
+
+function procurarHotelPelaReserva(idReserva){
+    let idHotel = reservas[idReserva - 1].idHotel
+    console.log("Hotel", hoteis[idHotel - 1].Nome);
+    console.log("Endereço", hoteis[idHotel - 1].Endereco);
+    console.log("Dia Entrada", reservas[idReserva - 1].DiaEntrada)
+    console.log("Dia Saída", reservas[idReserva - 1].DiaSaida)
+}
