@@ -37,3 +37,27 @@ class Biblioteca{
 }
 
 //Criando método construtor = function
+function buscarLivroPeloTitulo(titulo){
+    this.AcervoLivros.forEach(livro =>{
+        if(livro.Titulo == titulo){
+            console.log(livro)
+        }
+    })
+}
+
+function emprestarLivro(titulo){
+    let emprestado = false
+    this.AcervoLivros.forEach(livro =>{
+        if(livro.Titulo == titulo){
+            if(livro.Disponibilidade == true){
+                livro.Disponibilidade == false
+                emprestado = true
+            }
+        }
+    })
+    if(emprestado){
+        return true
+    }else{
+        return false
+    }
+}
