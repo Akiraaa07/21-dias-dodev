@@ -34,30 +34,56 @@ class Biblioteca{
         this.Telefone = telefone;
         this.AcervoLivros = acervo;
     }
-}
 
-//Criando método construtor = function
-function buscarLivroPeloTitulo(titulo){
-    this.AcervoLivros.forEach(livro =>{
-        if(livro.Titulo == titulo){
-            console.log(livro)
-        }
-    })
-}
-
-function emprestarLivro(titulo){
-    let emprestado = false
-    this.AcervoLivros.forEach(livro =>{
-        if(livro.Titulo == titulo){
-            if(livro.Disponibilidade == true){
-                livro.Disponibilidade == false
-                emprestado = true
+    //Criando método construtor = function
+    buscarLivroPeloTitulo(titulo){
+        let livroEncontrado = false;
+        this.AcervoLivros.forEach(livro => {
+            if (livro.Titulo === titulo){
+                console.log(livro)
+                livroEncontrado = true;
             }
+        });
+        if(!livroEncontrado) {
+            console.log("Livro não encontrado!!")
         }
-    })
-    if(emprestado){
-        return true
-    }else{
-        return false
+    }
+
+    emprestarLivro(titulo){
+        let emprestado = false
+        this.AcervoLivros.forEach(livro => {
+            if (livro.Titulo === titulo) {
+                if (livro.Disponibilidade) {
+                    livro.Disponibilidade = false;
+                    console.log(`Livro '${titulo}' emprestado com sucesso.`);
+                    emprestado = true
+                } else {
+                    console.log(`Livro '${titulo}' não está disponível.`);
+                }
+            }
+        });
+        if(!emprestado) {
+            console.log("Livro não encontrado ou já emprestado");
+        }
+    }
+
+    devolverLivro(titulo) {
+        let devolvido = false;
+        this.AcervoLivros.forEach(livro => {
+            if (livro.Titulo === titulo) {
+                livro.Disponibilidade = true;
+                console.log(`Livro '${titulo}' devolvido com sucesso.`);
+                devolvido = true;
+            }
+        });
+        if (!devolvido) {
+            console.log("Livro não encontrado");
+        }
     }
 }
+
+let biblioteca = new Biblioteca("Biblioteca do Japa", "Rua 2", "123456", livros);
+
+biblioteca.buscarLivroPeloTitulo("Livro02");
+biblioteca.emprestarLivro("Livro03");
+biblioteca.devolverLivro("Livro03");
