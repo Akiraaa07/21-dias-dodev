@@ -148,31 +148,31 @@ do{
         "\n7 - Atualizar telefone de um hotel \n8 - Encerrar programa")
 
     switch (opcao) {
-        case 1:
+        case "1":
             cadastrarHotel()
             break;
-        case 2:
+        case "2":
             cadastrarReserva()
             break;
-        case 3:
+        case "3":
             procurarReservaPeloHotel(prompt("Digite o id do hotel: "));
             break;
-        case 4:
+        case "4":
             procurarHotelPelaReserva(prompt("Digite o id da reserva: "));
             break;
-        case 5:
+        case "5":
             procurarReservaPeloNome(prompt("Digite o nome do responsavel pela reserva: "));
             break;
-        case 6:
-            let hoteisProcurados = procurarHotelPelaCategoria(parseInt(prompt("Digite a categoria que deseja procurar: ")));
+        case "6":
+            let hoteisProcurados = procurarHotelPelaCategoria(prompt("Digite a categoria que deseja procurar: "));
             console.log(hoteisProcurados);
             break;
-        case 7:
+        case "7":
             let IdHotel = parseInt(prompt("Digite o id do hotel que deseja atualizar: "));
             let telefone = prompt("Digite o novo telefone: ");
             atualizarTelefone(IdHotel, telefone);
             break;
-        case 8:
+        case "8":
             console.log("Programa Encerrado com sucesso!")
             continuar = false
             break;
