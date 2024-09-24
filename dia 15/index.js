@@ -1,21 +1,22 @@
 let arrayA = [13, 20, 10, 22, 24, 20, 27, 17, 19, 14];
 let arrayB = [24, 22, 23, 11, 15, 17, 29, 14, 16, 21];
 
-function doisArrays(arrayUm, arrayDois) {
+function numerosComuns(arrayUm, arrayDois) {
     let resultado = [];
     let contadorResultado = 0;
 
     for (let i = 0; i < arrayUm.length; i++) {
-        for (let j = 0; j < arrayDois.length; j++) {
-            if (arrayUm[i] == arrayDois[j]) {
+        if(arrayDois.includes(arrayUm[i])) {
+            let countArrayUm = arrayUm.filter(num => num === arrayUm[i]).length;
+            let countArrayDois = arrayDois.filter(num => num === arrayUm[i]).length;
+
+            if (countArrayUm === 1 && countArrayDois === 1) {
                 resultado[contadorResultado] = arrayUm[i];
                 contadorResultado++;
-                break;
             }
         }
     }
-
     return resultado;
 }
 
-console.log(doisArrays(arrayA, arrayB));
+console.log(numerosComuns(arrayA, arrayB));
